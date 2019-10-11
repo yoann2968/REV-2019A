@@ -2,7 +2,6 @@
 var mouse = new THREE.Vector2();
 var raycaster = new THREE.Raycaster();
 var mouseClicked = false;
-var mouseMoved = false;
 var world = null;
 var origin = new THREE.Vector3();
 var ext = new THREE.Vector3();
@@ -37,12 +36,11 @@ KeyboardControls.prototype.update = function (dt) {
 	if (this.plusBas)
 		this.position.y -= this.vitesse * dt;
 
-	if (this.aGauche)
-		this.angle += 0.05;
-
-
-	if (this.aDroite)
-		this.angle -= 0.05;
+	/* 	if (this.aGauche)
+			this.angle += 0.05;
+	
+		if (this.aDroite)
+			this.angle -= 0.05; */
 
 	if (this.enAvant) {
 		this.position.x += this.vitesse * dt * Math.cos(this.angle);
@@ -74,12 +72,10 @@ KeyboardControls.prototype.update = function (dt) {
 			this.position.z - Math.sin(this.angle))
 
 	};
-	if (mouseMoved) {
-		this.cible.set(mouse.x, mouse.y, 0);
-	}
+
+	this.angle = -mouse.x;
 
 	this.object.lookAt(this.cible);
-
 }
 
 
@@ -132,10 +128,7 @@ function keyDown(event) {
 
 
 function mouseMove(event) {
-	console.log("mouseMove");
-	mouse.x = (event.clientX / window.innerWidth) * 10;
-	mouse.y = (-event.clientY / window.innerHeight) * 10;
-	mouseMoved = true;
+	mouse.x = (event.clientX / window.innerWidth) * Math.PI * 4;
 }
 
 function mouseDown(event) {
