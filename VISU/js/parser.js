@@ -155,7 +155,6 @@ function parser(){
 		}
 	}
 
-
 	for(var i=0; i<relations.length; i++){
 		_rel = relations[i] ; 
 		var sujet = chercherDansAnnuaire(_rel.sujet) ; 
@@ -166,7 +165,5 @@ function parser(){
 			sujet.add(objet) ; 
 		}
 	}
-
-
 
 }

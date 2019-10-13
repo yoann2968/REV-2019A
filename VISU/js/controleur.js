@@ -17,7 +17,7 @@ var KeyboardControls = function (object) {
 	this.direction = new THREE.Vector3(1, 0, 0);
 	this.cible = new THREE.Vector3(2, 1.7, 5);
 
-	this.vitesse = 2.0;
+	this.vitesse = 10.0;
 
 	this.plusHaut = false;
 	this.plusBas = false;
