@@ -26,9 +26,9 @@ var KeyboardControls = function (object) {
 	this.aGauche = false;
 	this.aDroite = false;
 
-	this.prevTime = performance.now();
-	this.velocity = new THREE.Vector3();
-	this.vertex = new THREE.Vector3();
+	var prevTime = performance.now();
+	var velocity = new THREE.Vector3();
+	var vertex = new THREE.Vector3();
 	this.moveForward = false;
 	this.moveBackward = false;
 	this.moveLeft = false;

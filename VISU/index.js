@@ -1,9 +1,3 @@
-/* import * as THREE from './build/three.module.js';
-import { PointerLockControls } from './js/PointerLockControls.js';
-import * as parser from './js/parser.js'; */
-//import { KeyboardControls } from './js/controleur.js';
-
-
 //#region Variable
 var temps = 0.0;
 var dt;
@@ -28,6 +22,7 @@ var mouseY = 0.0;
 
 var data;
 
+var data;
 //#endregion
 
 //#region Initialisation
@@ -60,15 +55,15 @@ function init() {
 
 	});
 
-	controls = new KeyboardControls(camera);
 	//controls = new PointerLockControls(camera);
+
+	controls = new KeyboardControls(camera);
 
 	var blocker = document.getElementById('blocker');
 	var instructions = document.getElementById('instructions');
 	instructions.addEventListener('click', function () {
 		controls.lock();
 	}, false);
-
 	controls.addEventListener('lock', function () {
 		instructions.style.display = 'none';
 		blocker.style.display = 'none';
@@ -82,8 +77,10 @@ function init() {
 
 	window.addEventListener('keydown', keyDown, false);
 	window.addEventListener('keyup', keyUp, false);
-	//window.addEventListener('mousemove', mouseMove, false);
+	//window.addEventListener('mousemove', mouseMove ,    false) ;
 	window.addEventListener('mousedown', mouseDown, false);
+
+	console.log(controls);
 
 	chrono.start();
 
