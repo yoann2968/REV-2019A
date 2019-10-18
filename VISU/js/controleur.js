@@ -17,23 +17,14 @@ var KeyboardControls = function (object) {
 	this.direction = new THREE.Vector3(1, 0, 0);
 	this.cible = new THREE.Vector3(2, 1.7, 5);
 
-	this.vitesse = 10.0;
-
-	this.plusHaut = false;
-	this.plusBas = false;
-	this.enAvant = false;
-	this.enArriere = false;
-	this.aGauche = false;
-	this.aDroite = false;
-
-	var prevTime = performance.now();
 	var velocity = new THREE.Vector3();
 	var vertex = new THREE.Vector3();
+	this.plusHaut = false;
+	this.plusBas = false;
 	this.moveForward = false;
 	this.moveBackward = false;
 	this.moveLeft = false;
 	this.moveRight = false;
-
 
 	this.domElement = document.body;
 	this.isLocked = false;
@@ -53,7 +44,6 @@ var KeyboardControls = function (object) {
 	var PI_2 = Math.PI / 2;
 
 	var vec = new THREE.Vector3();
-
 
 	function onMouseMove(event) {
 		if (scope.isLocked === false) return;
@@ -179,33 +169,30 @@ KeyboardControls.prototype.constructor = KeyboardControls;
 
 KeyboardControls.prototype.update = function (dt) {
 
-	/*if (this.plusHaut)
+	if (this.plusHaut)
 		this.position.y += this.vitesse * dt;
 
 	if (this.plusBas)
 		this.position.y -= this.vitesse * dt;
 
-
-	if (this.aGauche)
-		this.angle += 0.05;
-
-	if (this.aDroite)
-		this.angle -= 0.05;
-
-	if (this.enAvant) {
-		this.position.x += this.vitesse * dt * Math.cos(this.angle);
-		this.position.z += -this.vitesse * dt * Math.sin(this.angle);
+	raycaster.ray.origin.copy(controls.getObject().position);
+	raycaster.ray.origin.y -= 10;
+	velocity.x -= velocity.x * 30.0 * dt;
+	velocity.z -= velocity.z * 30.0 * dt;
+	velocity.y -= 9.8 * 100.0 * dt; // 100.0 = mass
+	direction.z = Number(moveForward) - Number(moveBackward);
+	direction.x = Number(moveRight) - Number(moveLeft);
+	direction.normalize(); // this ensures consistent movements in all directions
+	if (moveForward || moveBackward) velocity.z -= direction.z * 300.0 * dt;
+	if (moveLeft || moveRight) velocity.x -= direction.x * 300.0 * dt;
+	controls.moveRight(- velocity.x * dt);
+	controls.moveForward(- velocity.z * dt);
+	controls.getObject().position.y += (velocity.y * dt); // new behavior
+	if (controls.getObject().position.y < 1.7) {
+		velocity.y = 0;
+		controls.getObject().position.y = 1.7;
+		canJump = true;
 	}
-
-	if (this.enArriere) {
-		this.position.x -= this.vitesse * dt * Math.cos(this.angle);
-		this.position.z -= -this.vitesse * dt * Math.sin(this.angle);
-	}
-
-	this.object.position.copy(this.position);
-
-	this.direction.set(Math.cos(this.angle), 0.0, -Math.sin(this.angle));
-
 
 	if (mouseClicked) {
 		this.object.position.set(ext.x, ext.y, ext.z);
@@ -215,45 +202,7 @@ KeyboardControls.prototype.update = function (dt) {
 		this.angle = -Math.atan2(this.direction.z, this.direction.x);
 
 		mouseClicked = false;
-
-	} else {
-		this.cible.set(this.position.x + Math.cos(this.angle),
-			this.position.y,
-			this.position.z - Math.sin(this.angle))
-
-	};
-
-	this.angle = -mouse.x;
-
-	this.object.lookAt(this.cible); */
-
-	raycaster.ray.origin.copy(controls.getObject().position);
-	raycaster.ray.origin.y -= 10;
-	/* 	var intersections = raycaster.intersectObjects(objects);
-		var onObject = intersections.length > 0; */
-	var time = performance.now();
-	var delta = (time - prevTime) / 1000;
-	velocity.x -= velocity.x * 20.0 * delta;
-	velocity.z -= velocity.z * 20.0 * delta;
-	velocity.y -= 9.8 * 100.0 * delta; // 100.0 = mass
-	direction.z = Number(moveForward) - Number(moveBackward);
-	direction.x = Number(moveRight) - Number(moveLeft);
-	direction.normalize(); // this ensures consistent movements in all directions
-	if (moveForward || moveBackward) velocity.z -= direction.z * 300.0 * delta;
-	if (moveLeft || moveRight) velocity.x -= direction.x * 300.0 * delta;
-	/* 	if (onObject === true) {
-			velocity.y = Math.max(0, velocity.y);
-			canJump = true;
-		} */
-	controls.moveRight(- velocity.x * delta);
-	controls.moveForward(- velocity.z * delta);
-	controls.getObject().position.y += (velocity.y * delta); // new behavior
-	if (controls.getObject().position.y < 1.7) {
-		velocity.y = 0;
-		controls.getObject().position.y = 1.7;
-		canJump = true;
 	}
-	prevTime = time;
 
 }
 
