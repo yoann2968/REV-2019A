@@ -3,11 +3,14 @@
  * @author Mugen87 / https://github.com/Mugen87
  */
 
-/* import {
-	Euler,
-	EventDispatcher,
-	Vector3
-} from "./../build/three.module.js"; */
+var prevTime = performance.now();
+var velocity = new THREE.Vector3();
+var direction = new THREE.Vector3();
+var vertex = new THREE.Vector3();
+var moveForward = false;
+var moveBackward = false;
+var moveLeft = false;
+var moveRight = false;
 
 var PointerLockControls = function (camera, domElement) {
 
