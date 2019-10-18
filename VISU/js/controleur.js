@@ -233,14 +233,14 @@ KeyboardControls.prototype.update = function (dt) {
 		var onObject = intersections.length > 0; */
 	var time = performance.now();
 	var delta = (time - prevTime) / 1000;
-	velocity.x -= velocity.x * 10.0 * delta;
-	velocity.z -= velocity.z * 10.0 * delta;
+	velocity.x -= velocity.x * 20.0 * delta;
+	velocity.z -= velocity.z * 20.0 * delta;
 	velocity.y -= 9.8 * 100.0 * delta; // 100.0 = mass
 	direction.z = Number(moveForward) - Number(moveBackward);
 	direction.x = Number(moveRight) - Number(moveLeft);
 	direction.normalize(); // this ensures consistent movements in all directions
-	if (moveForward || moveBackward) velocity.z -= direction.z * 400.0 * delta;
-	if (moveLeft || moveRight) velocity.x -= direction.x * 400.0 * delta;
+	if (moveForward || moveBackward) velocity.z -= direction.z * 300.0 * delta;
+	if (moveLeft || moveRight) velocity.x -= direction.x * 300.0 * delta;
 	/* 	if (onObject === true) {
 			velocity.y = Math.max(0, velocity.y);
 			canJump = true;
