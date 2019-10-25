@@ -38,7 +38,7 @@
 
 			{"type":"groupe",  "nom":"gr01","params":{}},
 			{"type":"sphere",  "nom":"sph01",       
-                                        "params":{"rayon":0.5,"subdivisions":16,"materiau":"materiauBleu"}},
+                                        "params":{"rayon":1.0,"subdivisions":16,"materiau":"materiauBlanc"}},
 			{"type":"sol",  "nom":"solSalleGauche",         
 										"params":{"largeur":10.0,"profondeur":16.0,"materiau":"solSalleGauche"}},
 			{"type":"sol",  "nom":"solSalleAvant",         
@@ -202,7 +202,7 @@
 			{"fonc":"placerXYZ", "objet":"solSalleCentrale2", "params":{"x":-7.5, "y":0,"z":7.5}},
 			{"fonc":"placerXYZ", "objet":"solSalleCentrale3", "params":{"x":7.5, "y":0,"z":7.5}},
 			{"fonc":"placerXYZ", "objet":"solSalleCentrale4", "params":{"x":7.5, "y":0,"z":-7.5}},
-			{"fonc":"placerXYZ", "objet":"sph01", "params":{"x":2, "y":5,"z":3}},
+			{"fonc":"placerXYZ", "objet":"sph01", "params":{"x":2, "y":1.5,"z":3}},
 			{"fonc":"placerXYZ", "objet":"poster01", "params":{"x":0, "y":1.7,"z":0.3}},
 			{"fonc":"placerXYZ", "objet":"texte01", "params":{"x":0, "y":5.0,"z":0.6}},				
 			{"fonc":"placerXYZ", "objet":"mur1PieceMilieu", "params":{"x":0.0, "y":0,"z":-10.0}},		
