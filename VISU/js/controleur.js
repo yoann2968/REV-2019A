@@ -274,14 +274,16 @@ function mouseDown(event) {
 	raycaster.setFromCamera(mouse, camera);
 	var intersects = raycaster.intersectObjects(scene.children, true);
 	if (intersects.length > 0) {
-		pointeur.position.set(intersects[0].point.x, intersects[0].point.y, +intersects[0].point.z);
-		mouseClicked = true;
-		world = intersects[0].object.matrixWorld;
-		origin = new THREE.Vector3(0, 0, 0);
-		ext = new THREE.Vector3(0, 0, 2);
-		origin.applyMatrix4(world);
-		ext.applyMatrix4(world);
-
+		if (intersects[0].object.geometry.type=="SphereGeometry" && intersects[0].object.material.color.getStyle()=="rgb(255,255,255)"){
+			console.log("Sphere Blanche détecter ma guelle");
+			pointeur.position.set(intersects[0].point.x, intersects[0].point.y, +intersects[0].point.z);
+			mouseClicked = true;
+			world = intersects[0].object.matrixWorld;
+			origin = new THREE.Vector3(0, 0, 0);
+			ext = new THREE.Vector3(0, 0, 2);
+			origin.applyMatrix4(world);
+			ext.applyMatrix4(world);
+		}
 	}
 }
 //#endregion
