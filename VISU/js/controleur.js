@@ -169,39 +169,51 @@ KeyboardControls.prototype.constructor = KeyboardControls;
 
 KeyboardControls.prototype.update = function (dt) {
 
-	if (this.plusHaut)
-		this.position.y += this.vitesse * dt;
+	/* 	if (this.plusHaut)
+			this.position.y += this.vitesse * dt;
+	
+		if (this.plusBas)
+			this.position.y -= this.vitesse * dt; */
 
-	if (this.plusBas)
-		this.position.y -= this.vitesse * dt;
 
-	raycaster.ray.origin.copy(controls.getObject().position);
-	raycaster.ray.origin.y -= 10;
-	velocity.x -= velocity.x * 30.0 * dt;
-	velocity.z -= velocity.z * 30.0 * dt;
-	velocity.y -= 9.8 * 100.0 * dt; // 100.0 = mass
-	direction.z = Number(moveForward) - Number(moveBackward);
-	direction.x = Number(moveRight) - Number(moveLeft);
-	direction.normalize(); // this ensures consistent movements in all directions
-	if (moveForward || moveBackward) velocity.z -= direction.z * 300.0 * dt;
-	if (moveLeft || moveRight) velocity.x -= direction.x * 300.0 * dt;
-	controls.moveRight(- velocity.x * dt);
-	controls.moveForward(- velocity.z * dt);
-	controls.getObject().position.y += (velocity.y * dt); // new behavior
-	if (controls.getObject().position.y < 1.7) {
-		velocity.y = 0;
-		controls.getObject().position.y = 1.7;
-		canJump = true;
-	}
+
 
 	if (mouseClicked) {
-		this.object.position.set(ext.x, ext.y, ext.z);
-		this.position.set(ext.x, ext.y, ext.z);
-		this.cible.set(origin.x, origin.y, origin.z);
-		this.direction.set(origin.x - ext.x, origin.y - ext.y, origin.z - ext.z);
-		this.angle = -Math.atan2(this.direction.z, this.direction.x);
+		this.isLocked = false;
 
-		mouseClicked = false;
+		direction.set(origin.x - ext.x, origin.y - ext.y, origin.z - ext.z);
+		direction.normalize();
+		velocity.z = direction.z * 300.0 * dt;
+		velocity.x = direction.x * 300.0 * dt;
+		controls.moveRight(- velocity.x * dt);
+		controls.moveForward(- velocity.z * dt);
+
+		var pos = camera.position;
+
+		if ((pos.x > ext.x - 5 && pos.x < ext.x + 5) && (pos.z > ext.z - 5 && pos.z < ext.z + 5)) {
+			mouseClicked = false;
+			this.isLocked = true;
+		}
+	}
+	else {
+		raycaster.ray.origin.copy(controls.getObject().position);
+		raycaster.ray.origin.y -= 10;
+		velocity.x -= velocity.x * 30.0 * dt;
+		velocity.z -= velocity.z * 30.0 * dt;
+		velocity.y -= 9.8 * 100.0 * dt; // 100.0 = mass
+		direction.z = Number(moveForward) - Number(moveBackward);
+		direction.x = Number(moveRight) - Number(moveLeft);
+		direction.normalize(); // this ensures consistent movements in all directions
+		if (moveForward || moveBackward) velocity.z -= direction.z * 300.0 * dt;
+		if (moveLeft || moveRight) velocity.x -= direction.x * 300.0 * dt;
+		controls.moveRight(- velocity.x * dt);
+		controls.moveForward(- velocity.z * dt);
+		controls.getObject().position.y += (velocity.y * dt); // new behavior
+		if (controls.getObject().position.y < 1.7) {
+			velocity.y = 0;
+			controls.getObject().position.y = 1.7;
+			canJump = true;
+		}
 	}
 
 }
@@ -274,7 +286,7 @@ function mouseDown(event) {
 	raycaster.setFromCamera(mouse, camera);
 	var intersects = raycaster.intersectObjects(scene.children, true);
 	if (intersects.length > 0) {
-		if (intersects[0].object.geometry.type=="SphereGeometry" && intersects[0].object.material.color.getStyle()=="rgb(255,255,255)"){
+		if (intersects[0].object.geometry.type == "SphereGeometry" && intersects[0].object.material.color.getStyle() == "rgb(255,255,255)") {
 			console.log("Sphere Blanche détecter ma guelle");
 			pointeur.position.set(intersects[0].point.x, intersects[0].point.y, +intersects[0].point.z);
 			mouseClicked = true;
