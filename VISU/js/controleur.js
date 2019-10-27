@@ -281,13 +281,12 @@ function keyDown(event) {
 
 function mouseDown(event) {
 	event.preventDefault();
-	mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-	mouse.y = (-event.clientY / window.innerHeight) * 2 + 1;
+	mouse.x = 0;
+	mouse.y = 0;
 	raycaster.setFromCamera(mouse, camera);
 	var intersects = raycaster.intersectObjects(scene.children, true);
 	if (intersects.length > 0) {
 		if (intersects[0].object.geometry.type == "SphereGeometry" && intersects[0].object.material.color.getStyle() == "rgb(255,255,255)") {
-			console.log("Sphere Blanche détecter ma guelle");
 			pointeur.position.set(intersects[0].point.x, intersects[0].point.y, +intersects[0].point.z);
 			mouseClicked = true;
 			world = intersects[0].object.matrixWorld;
