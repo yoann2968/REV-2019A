@@ -62,7 +62,7 @@ function parser(){
 			var largeur   = params.largeur ;
 			var hauteur   = params.hauteur ; 
 			var epaisseur = params.epaisseur ;
-                        var nx        = params.nl || 1 ; 
+            var nx        = params.nl || 1 ; 
 			var ny	      = params.nh || 1 ; 
 			var nz 	      = params.ne || 1 ;
 			var materiau  = chercherDansAnnuaire(params.materiau) || materiauBlanc ;

@@ -5,6 +5,9 @@ var mouseClicked = false;
 var world = null;
 var origin = new THREE.Vector3();
 var ext = new THREE.Vector3();
+var POSTER = "poster";
+var date;
+var previousElementSeen;
 //#endregion
 
 //#region Méthode
@@ -166,6 +169,34 @@ var KeyboardControls = function (object) {
 KeyboardControls.prototype = Object.create(THREE.EventDispatcher.prototype);
 KeyboardControls.prototype.constructor = KeyboardControls;
 
+/** Détecte si l'utilisateur regarde un tableau pendant plus de trois secondes ou non
+ *	Return : true si un tableau est regardé pendant plus de trois secondes
+ * 			 false sinon */ 
+
+function detectTableaux(){
+	raycaster.setFromCamera(mouse, camera);
+	// calculate objects intersecting the picking ray
+	var intersects = raycaster.intersectObjects(scene.children, true);
+	if (intersects.length > 0){
+		var posterName = intersects[0].object.name;
+		// Teste si l'objet regardé est un poster (les posters ont un nom commençant par 'poster')
+		if (posterName.includes(POSTER)) {
+			// Teste si l'élément regardé est le même que précedemment ou non
+			if (posterName !== previousElementSeen){
+				date = new Date();
+			} else {
+				var date2 = new Date();
+				// Si l'objet regardé est le même que précedemment et est regardé pendant plus de trois secondes, retourne true
+				if (date2 - date > 3000){
+					return true;
+				}
+			}
+		}
+		//Stocke le dernier élément vu par le 'joueur'
+		previousElementSeen = intersects[0].object.name;
+	}
+	return false;
+}
 
 KeyboardControls.prototype.update = function (dt) {
 
@@ -175,9 +206,11 @@ KeyboardControls.prototype.update = function (dt) {
 		if (this.plusBas)
 			this.position.y -= this.vitesse * dt; */
 
-
-
-
+	if (detectTableaux()){
+		console.log("test");
+		
+	}
+	
 	if (mouseClicked) {
 		this.isLocked = false;
 
