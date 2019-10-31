@@ -15,7 +15,7 @@ function creerSol(nom,largeur,hauteur,materiau){
 					largeur,hauteur,
 					Math.floor(largeur/10.0)+1, Math.floor(hauteur/10)+1) ; 
 	var mesh  = new THREE.Mesh(geo,materiau) ; 
-	mesh.name = nom ;
+	mesh.name = "sol_" + nom ;
 	mesh.rotation.x = - Math.PI / 2 ;
 	return mesh ;   
 }
@@ -23,7 +23,7 @@ function creerSol(nom,largeur,hauteur,materiau){
 function creerCloison(nom,largeur, hauteur, epaisseur, nx, ny, nz, materiau){
 	var geo  = new THREE.BoxGeometry(largeur, hauteur, epaisseur, nx, ny, nz) ; 
 	var mesh = new THREE.Mesh(geo, materiau) ;
-	mesh.name = nom;
+	mesh.name = "mur_" + nom;
 	mesh.position.set(0, hauteur, 0);
 	return mesh;
 }
@@ -41,6 +41,7 @@ function creerPoster(nom,largeur, hauteur, nomImage){
 	var geo   = new THREE.PlaneGeometry(largeur, hauteur) ; 
 	var mat   = creerLambertTexture(nomImage, 0xffffff) ; 
 	var mesh  = new THREE.Mesh(geo, mat) ; 
+	mesh.description = undefined;
 	mesh.name = "poster_" + nom ;
 	return mesh ;   
 }

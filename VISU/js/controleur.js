@@ -6,8 +6,11 @@ var world = null;
 var origin = new THREE.Vector3();
 var ext = new THREE.Vector3();
 var POSTER = "poster";
+var MUR = "mur";
+var SOL = "sol";
 var date;
 var previousElementSeen;
+var lastPosterSeen;
 //#endregion
 
 //#region Méthode
@@ -170,32 +173,58 @@ KeyboardControls.prototype = Object.create(THREE.EventDispatcher.prototype);
 KeyboardControls.prototype.constructor = KeyboardControls;
 
 /** Détecte si l'utilisateur regarde un tableau pendant plus de trois secondes ou non
- *	Return : true si un tableau est regardé pendant plus de trois secondes
- * 			 false sinon */ 
+ *	Si oui, affiche une description du tableau
+ *  Sinon, efface la description */ 
 
 function detectTableaux(){
 	raycaster.setFromCamera(mouse, camera);
 	// calculate objects intersecting the picking ray
 	var intersects = raycaster.intersectObjects(scene.children, true);
 	if (intersects.length > 0){
-		var posterName = intersects[0].object.name;
+		var objectName = intersects[0].object.name;
 		// Teste si l'objet regardé est un poster (les posters ont un nom commençant par 'poster')
-		if (posterName.includes(POSTER)) {
+		if (objectName.includes(POSTER)) {
 			// Teste si l'élément regardé est le même que précedemment ou non
-			if (posterName !== previousElementSeen){
-				date = new Date();
-			} else {
+			if (objectName === previousElementSeen){
 				var date2 = new Date();
-				// Si l'objet regardé est le même que précedemment et est regardé pendant plus de trois secondes, retourne true
-				if (date2 - date > 3000){
-					return true;
+				// Teste si l'on regarde le poster depuis plus de 3 secondes
+				if (date2 - date > 3000 && lastPosterSeen.description === undefined){
+					lastPosterSeen.description = afficherTexte(intersects[0].object, getTexte(intersects[0].object));
 				}
-			}
+			} 
+			lastPosterSeen = intersects[0].object;
+		// Si on regarde un mur ou un sol, efface la description du précédent poster vu
+		} else if (objectName.includes(MUR) || objectName.includes(SOL)) {	
+			effacerTexte(lastPosterSeen);
+			date = new Date();
 		}
 		//Stocke le dernier élément vu par le 'joueur'
 		previousElementSeen = intersects[0].object.name;
 	}
-	return false;
+}
+
+// Créé un nouveau texte qui s'affichera devant le tableau
+function afficherTexte(tableau, text){
+	texte = creerText(text, 2, 5);
+	placerXYZ(texte, 0, 0, 0.1);
+	parentDe(tableau, texte);
+	return texte;
+}
+
+// Efface le texte de description d'un poster
+function effacerTexte(poster){
+	if (poster !== undefined){
+		poster.remove(poster.description);
+		poster.description = undefined;
+	}
+}
+
+function getTexte(poster){
+	var description;
+	if (poster.name === 'poster_poster01'){
+		description = 'Test !'
+	}
+	return description;
 }
 
 KeyboardControls.prototype.update = function (dt) {
@@ -206,10 +235,7 @@ KeyboardControls.prototype.update = function (dt) {
 		if (this.plusBas)
 			this.position.y -= this.vitesse * dt; */
 
-	if (detectTableaux()){
-		console.log("test");
-		
-	}
+	detectTableaux()
 	
 	if (mouseClicked) {
 		this.isLocked = false;
