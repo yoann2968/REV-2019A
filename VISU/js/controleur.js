@@ -205,7 +205,7 @@ function detectTableaux(){
 
 // Créé un nouveau texte qui s'affichera devant le tableau
 function afficherTexte(tableau, text){
-	texte = creerText(text, 2, 5);
+	texte = creerText(text, 2);
 	placerXYZ(texte, 0, 0, 0.1);
 	parentDe(tableau, texte);
 	return texte;
@@ -219,14 +219,6 @@ function effacerTexte(poster){
 	}
 }
 
-function getTexte(poster){
-	var description;
-	if (poster.name === 'poster_poster01'){
-		description = 'Test !'
-	}
-	return description;
-}
-
 KeyboardControls.prototype.update = function (dt) {
 
 	/* 	if (this.plusHaut)
@@ -235,7 +227,7 @@ KeyboardControls.prototype.update = function (dt) {
 		if (this.plusBas)
 			this.position.y -= this.vitesse * dt; */
 
-	detectTableaux()
+	detectTableaux();
 	
 	if (mouseClicked) {
 		this.isLocked = false;

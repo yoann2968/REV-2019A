@@ -63,20 +63,38 @@ function creerPoster1(nom,largeur, hauteur, nomImage){
 	return groupe ;   
 }
 
-function creerText(description,largeur,hauteur){
+function creerText(description, largeur){
+	description = description.split("\n");
+	var canvasHeight = description.length;
+	var textSize;
+
+	// Fixe la taille du texte pour qu'il rentre dans le canvas prévu à cet effet
+	if (canvasHeight >= 4 && canvasHeight <= 7){
+		textSize = 20 + (7-canvasHeight)*4 ;
+	} else if (canvasHeight < 4){
+		textSize = 32;
+	} else {
+		throw("Erreur, description dépassant les 7 lignes !");
+	}
+
 	canvas = document.createElement('canvas')
 	context = canvas.getContext('2d');
-	canvas.width=1000
-	canvas.heigth=5
-	context.font = '80pt Arial';
-	context.fillStyle = 'white';
-	context.fillRect(0, 0, canvas.width - 0, canvas.height - 0);
+	canvas.width = 500;
+	context.font = textSize + 'pt Arial';
 	context.fillStyle = 'black';
-    	context.textAlign = "center";
-    	context.textBaseline = "middle";
-    	context.fillText(description, canvas.width / 2, canvas.height / 2);
+	context.textAlign = "center";
+	context.textBaseline = "middle";
 
-	var geometry = new THREE.PlaneGeometry(largeur*0.9, hauteur*0.1) ; 
+	var textX = canvas.width /2;
+	var textY;
+	var offset = textSize;
+	var textHeight = 30;
+	for (var i = 0; i < description.length; i ++){
+		textY = textSize/1.5 + i * offset;
+		context.fillText(description[i], textX, textY);
+	}
+
+	var geometry = new THREE.PlaneGeometry(largeur * 0.9, textSize * canvasHeight * 0.01) ; 
 	texture = new THREE.CanvasTexture(canvas);
 	var material = new THREE.MeshLambertMaterial({color:0xffffff,map:texture}) ;
 	var mesh = new THREE.Mesh(geometry,material)

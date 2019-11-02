@@ -78,7 +78,7 @@ function parser(){
 		} else
 		if(_obj.type == "texte"){
 			var largeur = params.largeur ;
-			var hauteur = params.hauteur ; 
+			var hauteur = params.hauteur ;
 			var desc    = params.texte ; 
 			var texte   = creerText(desc,largeur,hauteur) ;  
 			enregistrerDansAnnuaire(nom, texte) ; 
