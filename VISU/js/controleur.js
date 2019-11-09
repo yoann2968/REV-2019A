@@ -224,7 +224,7 @@ function getSalleActuelle(){
 	var posZ = controls.getObject().position.z;
 	if (posX > -10 && posX < 10 && posZ > -6 && posZ < 6
 		|| posX > -6 && posX < 6 && posZ > -10 && posZ < 10
-		|| isInCorner(posX, posZ)){
+		|| isInCorner(posX, posZ) && posX > -10 && posX < 10 && posZ > -10 && posZ < 10){
 		return 'salleCentrale';
 	} else if (posX < -15){
 		return 'salleGauche';
@@ -267,7 +267,6 @@ KeyboardControls.prototype.update = function (dt) {
 	detectTableaux();
 
 	var salle = getSalleActuelle();
-	console.log(salle);
 	
 	if (mouseClicked) {
 		this.isLocked = false;
