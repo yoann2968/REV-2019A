@@ -74,7 +74,7 @@ function creerText(description, largeur){
 	} else if (canvasHeight < 4){
 		textSize = 32;
 	} else {
-		throw("Erreur, description dépassant les 7 lignes !");
+		throw("Erreur, description dépassant 7 lignes !");
 	}
 
 	canvas = document.createElement('canvas')
@@ -100,10 +100,6 @@ function creerText(description, largeur){
 	var mesh = new THREE.Mesh(geometry,material)
     return mesh;
 }
-
-
-
-
 
 // ===================
 // Création de sources

@@ -219,6 +219,43 @@ function effacerTexte(poster){
 	}
 }
 
+function getSalleActuelle(){
+	var posX = controls.getObject().position.x;
+	var posZ = controls.getObject().position.z;
+	if (posX > -10 && posX < 10 && posZ > -6 && posZ < 6
+		|| posX > -6 && posX < 6 && posZ > -10 && posZ < 10
+		|| isInCorner(posX, posZ)){
+		return 'salleCentrale';
+	} else if (posX < -15){
+		return 'salleGauche';
+	} else if (posX > 15){
+		return 'salleDroite';
+	} else if (posZ < -15){
+		return 'salleAvant';
+	} else if (posZ > 15){
+		return 'salleArriere';
+	} else {
+		return 'couloir';
+	}
+}
+
+/* Détecte si le joueur est dans un coin de la pièce centrale ou non
+Pour chaque coin, le mur est répresenté par une équation de droite affine dans le repère du musée
+Si le joueur est en dessous de deux droites (coin avant droit et coin arrière droit) et au dessus de deux autres (coin avant gauche et coin arrière gauche), 
+alors il se trouve dans la pièce centrale 
+Formule utilisée : posX - ( a * posZ + b ) où (posX,posZ) est la position du joueur, et la droite est d'équation x = a*z + b*/
+function isInCorner(posX, posZ){
+	// Coin avant gauche (x = -z -16)
+	var distance = (posX - (-1*posZ-16)) > 0;
+	// Coin avant droit (x = (x = z + 16))
+	var distance2 = (posX - (1*posZ+16)) < 0;
+	// Coin arrière gauche (x = z -16)
+	var distance3 = (posX - (1*posZ-16)) > 0;
+	// Coin arrière droit (x = -z + 16)
+	var distance4 = (posX - (-1*posZ+16)) < 0;
+	return distance && distance2 && distance3 && distance4;
+}
+
 KeyboardControls.prototype.update = function (dt) {
 
 	/* 	if (this.plusHaut)
@@ -228,6 +265,9 @@ KeyboardControls.prototype.update = function (dt) {
 			this.position.y -= this.vitesse * dt; */
 
 	detectTableaux();
+
+	var salle = getSalleActuelle();
+	console.log(salle);
 	
 	if (mouseClicked) {
 		this.isLocked = false;
