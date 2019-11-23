@@ -11,6 +11,12 @@ var SOL = "sol";
 var date;
 var previousElementSeen;
 var lastPosterSeen;
+var velocity = new THREE.Vector3();
+var direction = new THREE.Vector3(1, 0, 0);
+var moveForward = false;
+var moveBackward = false;
+var moveLeft = false;
+var moveRight = false;
 //#endregion
 
 //#region Méthode
@@ -20,17 +26,13 @@ var KeyboardControls = function (object) {
 	this.position = new THREE.Vector3(1, 1.7, 5);
 
 	this.angle = 0.0;
-	this.direction = new THREE.Vector3(1, 0, 0);
+
 	this.cible = new THREE.Vector3(2, 1.7, 5);
 
-	var velocity = new THREE.Vector3();
+
 	var vertex = new THREE.Vector3();
 	this.plusHaut = false;
 	this.plusBas = false;
-	this.moveForward = false;
-	this.moveBackward = false;
-	this.moveLeft = false;
-	this.moveRight = false;
 
 	this.domElement = document.body;
 	this.isLocked = false;
@@ -311,26 +313,26 @@ KeyboardControls.prototype.update = function (dt) {
 function keyUp(event) {
 	switch (event.keyCode) {
 		case 33: // HAUT
-			controls.plusHaut = false;
+			plusHaut = false;
 			break;
 		case 34: // BAS
-			controls.plusBas = false;
+			plusBas = false;
 			break;
 		case 38: // up
 		case 90: // w
-			controls.moveForward = false;
+			moveForward = false;
 			break;
 		case 37: // left
 		case 81: // a
-			controls.moveLeft = false;
+			moveLeft = false;
 			break;
 		case 40: // down
 		case 83: // s
-			controls.moveBackward = false;
+			moveBackward = false;
 			break;
 		case 39: // right
 		case 68: // d
-			controls.moveRight = false;
+			moveRight = false;
 			break;
 	}
 }
@@ -339,30 +341,30 @@ function keyUp(event) {
 function keyDown(event) {
 	switch (event.keyCode) {
 		case 33: // HAUT
-			controls.plusHaut = true;
+			plusHaut = true;
 			break;
 		case 34: // BAS
-			controls.plusBas = true;
+			plusBas = true;
 			break;
 		case 38: // up
 		case 90: // w
-			controls.moveForward = true;
+			moveForward = true;
 			break;
 		case 37: // left
 		case 81: // a
-			controls.moveLeft = true;
+			moveLeft = true;
 			break;
 		case 40: // down
 		case 83: // s
-			controls.moveBackward = true;
+			moveBackward = true;
 			break;
 		case 39: // right
 		case 68: // d
-			controls.moveRight = true;
+			moveRight = true;
 			break;
 		case 32: // space
-			if (controls.canJump === true) velocity.y += 350;
-			controls.canJump = false;
+			if (canJump === true) velocity.y += 350;
+			canJump = false;
 			break;
 	}
 }
