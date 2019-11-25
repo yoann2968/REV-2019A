@@ -116,6 +116,7 @@ function creerSoleil(){
 }
 
 function creerSourceAudio3d(listener, fileName, loop, volume, distance){
+	console.log(listener);
 	var sound = new THREE.PositionalAudio(listener) ; 
 	var audioLoader = new THREE.AudioLoader() ; 
 	audioLoader.load(
@@ -128,7 +129,7 @@ function creerSourceAudio3d(listener, fileName, loop, volume, distance){
 					sound.setLoop(loop) ; 
 					sound.setVolume(volume) ;
 					sound.setRefDistance(distance) ;  
-					sound.play() ; 
+					//sound.play() ; 
 				}) ;
 	return sound ;
 }

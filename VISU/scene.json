@@ -2,7 +2,11 @@
 	"objets" : [
 			{"type":"soleil" , "nom":"soleil"    , "params":{}},
 			{"type":"ampoule", "nom":"ampoule01" , "params":{"couleur":"rouge","intensite":2.0,"portee":5.0,"attenuation":2.0}},
-
+			{"type":"audio", "nom":"salleGaucheAudio" , "params":{"loop":true,"volume":1.0,"distance":1.0,"url":"assets/musique.mp3"}},
+			{"type":"audio", "nom":"salleDroiteAudio" , "params":{"loop":true,"volume":1.0,"distance":1.0,"url":"assets/musique.mp3"}},
+			{"type":"audio", "nom":"salleAvantAudio" , "params":{"loop":true,"volume":1.0,"distance":1.0,"url":"assets/musique/music-roman.mp3"}},
+			{"type":"audio", "nom":"salleArriereAudio" , "params":{"loop":true,"volume":1.0,"distance":1.0,"url":"assets/musique/music-pharaoh.mp3"}},
+			{"type":"audio", "nom":"couloirAudio" , "params":{"loop":true,"volume":1.0,"distance":1.0,"url":"assets/musique.mp3"}},
 			{"type":"standard", "nom":"materiauBleu","params":{"couleur":"bleu"}},
 			{"type":"standard", "nom":"materiauBlanc","params":{"couleur":"blanc"}},
 			{"type":"standard", "nom":"wfRouge","params":{"couleur":"rouge"}},
@@ -298,6 +302,7 @@
 			{"rel":"parentDe","sujet":"scene","objet":"mur2SalleDroite"},				
 			{"rel":"parentDe","sujet":"scene","objet":"mur3SalleDroite"},
 			{"rel":"parentDe","sujet":"mur1PieceMilieu","objet":"poster01"},
-			{"rel":"parentDe","sujet":"mur1PieceMilieu","objet":"texte01"}
+			{"rel":"parentDe","sujet":"mur1PieceMilieu","objet":"texte01"},
+			{"rel":"parentDe","sujet":"poster01","objet":"salleCentraleAudio"}
 		      ]
 }

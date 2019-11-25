@@ -17,6 +17,7 @@ var moveForward = false;
 var moveBackward = false;
 var moveLeft = false;
 var moveRight = false;
+var salle = "salleCentrale";
 //#endregion
 
 //#region Méthode
@@ -176,27 +177,27 @@ KeyboardControls.prototype.constructor = KeyboardControls;
 
 /** Détecte si l'utilisateur regarde un tableau pendant plus de trois secondes ou non
  *	Si oui, affiche une description du tableau
- *  Sinon, efface la description */ 
+ *  Sinon, efface la description */
 
-function detectTableaux(){
+function detectTableaux() {
 	raycaster.setFromCamera(mouse, camera);
 	// calculate objects intersecting the picking ray
 	var intersects = raycaster.intersectObjects(scene.children, true);
-	if (intersects.length > 0){
+	if (intersects.length > 0) {
 		var objectName = intersects[0].object.name;
 		// Teste si l'objet regardé est un poster (les posters ont un nom commençant par 'poster')
 		if (objectName.includes(POSTER)) {
 			// Teste si l'élément regardé est le même que précedemment ou non
-			if (objectName === previousElementSeen){
+			if (objectName === previousElementSeen) {
 				var date2 = new Date();
 				// Teste si l'on regarde le poster depuis plus de 3 secondes
-				if (date2 - date > 3000 && lastPosterSeen.description === undefined){
+				if (date2 - date > 3000 && lastPosterSeen.description === undefined) {
 					lastPosterSeen.description = afficherTexte(intersects[0].object, getTexte(intersects[0].object));
 				}
-			} 
+			}
 			lastPosterSeen = intersects[0].object;
-		// Si on regarde un mur ou un sol, efface la description du précédent poster vu
-		} else if (objectName.includes(MUR) || objectName.includes(SOL)) {	
+			// Si on regarde un mur ou un sol, efface la description du précédent poster vu
+		} else if (objectName.includes(MUR) || objectName.includes(SOL)) {
 			effacerTexte(lastPosterSeen);
 			date = new Date();
 		}
@@ -206,7 +207,7 @@ function detectTableaux(){
 }
 
 // Créé un nouveau texte qui s'affichera devant le tableau
-function afficherTexte(tableau, text){
+function afficherTexte(tableau, text) {
 	texte = creerText(text, 2);
 	placerXYZ(texte, 0, 0, 0.1);
 	parentDe(tableau, texte);
@@ -214,27 +215,27 @@ function afficherTexte(tableau, text){
 }
 
 // Efface le texte de description d'un poster
-function effacerTexte(poster){
-	if (poster !== undefined){
+function effacerTexte(poster) {
+	if (poster !== undefined) {
 		poster.remove(poster.description);
 		poster.description = undefined;
 	}
 }
 
-function getSalleActuelle(){
+function getSalleActuelle() {
 	var posX = controls.getObject().position.x;
 	var posZ = controls.getObject().position.z;
 	if (posX > -10 && posX < 10 && posZ > -6 && posZ < 6
 		|| posX > -6 && posX < 6 && posZ > -10 && posZ < 10
-		|| isInCorner(posX, posZ) && posX > -10 && posX < 10 && posZ > -10 && posZ < 10){
+		|| isInCorner(posX, posZ) && posX > -10 && posX < 10 && posZ > -10 && posZ < 10) {
 		return 'salleCentrale';
-	} else if (posX < -15){
+	} else if (posX < -15) {
 		return 'salleGauche';
-	} else if (posX > 15){
+	} else if (posX > 15) {
 		return 'salleDroite';
-	} else if (posZ < -15){
+	} else if (posZ < -15) {
 		return 'salleAvant';
-	} else if (posZ > 15){
+	} else if (posZ > 15) {
 		return 'salleArriere';
 	} else {
 		return 'couloir';
@@ -246,15 +247,15 @@ Pour chaque coin, le mur est répresenté par une équation de droite affine dan
 Si le joueur est en dessous de deux droites (coin avant droit et coin arrière droit) et au dessus de deux autres (coin avant gauche et coin arrière gauche), 
 alors il se trouve dans la pièce centrale 
 Formule utilisée : posX - ( a * posZ + b ) où (posX,posZ) est la position du joueur, et la droite est d'équation x = a*z + b*/
-function isInCorner(posX, posZ){
+function isInCorner(posX, posZ) {
 	// Coin avant gauche (x = -z -16)
-	var distance = (posX - (-1*posZ-16)) > 0;
+	var distance = (posX - (-1 * posZ - 16)) > 0;
 	// Coin avant droit (x = (x = z + 16))
-	var distance2 = (posX - (1*posZ+16)) < 0;
+	var distance2 = (posX - (1 * posZ + 16)) < 0;
 	// Coin arrière gauche (x = z -16)
-	var distance3 = (posX - (1*posZ-16)) > 0;
+	var distance3 = (posX - (1 * posZ - 16)) > 0;
 	// Coin arrière droit (x = -z + 16)
-	var distance4 = (posX - (-1*posZ+16)) < 0;
+	var distance4 = (posX - (-1 * posZ + 16)) < 0;
 	return distance && distance2 && distance3 && distance4;
 }
 
@@ -268,8 +269,20 @@ KeyboardControls.prototype.update = function (dt) {
 
 	detectTableaux();
 
-	var salle = getSalleActuelle();
-	
+	var salleActuelle = getSalleActuelle();
+	if (salleActuelle != salle) {
+		if (salleActuelle != "salleCentrale") {
+			var sound = chercherDansAnnuaire(salleActuelle + "Audio");
+			sound.play();
+		}
+		if (salle != "salleCentrale") {
+			sound = chercherDansAnnuaire(salle + "Audio");
+			sound.stop();
+		}
+		salle = salleActuelle;
+	}
+
+
 	if (mouseClicked) {
 		this.isLocked = false;
 
