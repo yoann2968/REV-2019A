@@ -12,6 +12,10 @@ function getTexte(poster) {
 		description = "Pierre Henri\nEruption du Vésuve\n arrivée le 24 août\n de l'an 79 de J.-C\n sous le règne de Titus"
 	} else if (poster.name === 'poster_geromePolliceVerso') {
 		description = "Pollice Verso\ndu peintre français\nJean-Léon Gérôme\nréalisé en 1872"
+	} else if (poster.name === 'poster_carteRouteRome') {
+		description = "la Table de Peutinger\nreprésentant les routes\net les principales villes\nde l’Empire romain"
+	} else if (poster.name === 'poster_VillaMysteres') {
+		description = "La maitresse de maison\nest plusieurs fois représentée,\npoursuivie par des ménades,\nen présence de Dionysos\net dans une phase\nd’initiation occulte"
 	} else if (poster.name === 'poster_Anubis') {
 		description = "Maître des nécropoles\net protecteur des\nembaumeurs, Anubis\nest un dieu\nde l\'Egypte Antique"
 	} else if (poster.name === 'poster_Hieroglyphes') {
