@@ -191,7 +191,11 @@
                                                      	"hauteur":0.1,
                                                      	"epaisseur":30.0,
 						     							"nl":10, "ne":10, "nh":10,
-														 "materiau":"textureBrick"}}
+														 "materiau":"textureBrick"}},
+			{"type":"model", "nom":"model1", "params":{"largeur":10, 
+															"hauteur":6.0,
+															"epaisseur":0.1,
+															"url":"assets/mars.obj"}}
 		    ],
 	"actions" : [
 			{"fonc":"placerXYZ", "objet":"ampoule01", "params":{"x":1, "y":2.5,"z":3}},
@@ -302,7 +306,6 @@
 			{"rel":"parentDe","sujet":"scene","objet":"mur2SalleDroite"},				
 			{"rel":"parentDe","sujet":"scene","objet":"mur3SalleDroite"},
 			{"rel":"parentDe","sujet":"mur1PieceMilieu","objet":"poster01"},
-			{"rel":"parentDe","sujet":"mur1PieceMilieu","objet":"texte01"},
-			{"rel":"parentDe","sujet":"poster01","objet":"salleCentraleAudio"}
+			{"rel":"parentDe","sujet":"mur1PieceMilieu","objet":"texte01"}
 		      ]
 }

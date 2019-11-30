@@ -261,12 +261,6 @@ function isInCorner(posX, posZ) {
 
 KeyboardControls.prototype.update = function (dt) {
 
-	/* 	if (this.plusHaut)
-			this.position.y += this.vitesse * dt;
-	
-		if (this.plusBas)
-			this.position.y -= this.vitesse * dt; */
-
 	detectTableaux();
 
 	var salleActuelle = getSalleActuelle();
@@ -313,24 +307,12 @@ KeyboardControls.prototype.update = function (dt) {
 		if (moveLeft || moveRight) velocity.x -= direction.x * 300.0 * dt;
 		controls.moveRight(- velocity.x * dt);
 		controls.moveForward(- velocity.z * dt);
-		controls.getObject().position.y += (velocity.y * dt); // new behavior
-		if (controls.getObject().position.y < 1.7) {
-			velocity.y = 0;
-			controls.getObject().position.y = 1.7;
-			canJump = true;
-		}
 	}
 
 }
 
 function keyUp(event) {
 	switch (event.keyCode) {
-		case 33: // HAUT
-			plusHaut = false;
-			break;
-		case 34: // BAS
-			plusBas = false;
-			break;
 		case 38: // up
 		case 90: // w
 			moveForward = false;
@@ -353,12 +335,6 @@ function keyUp(event) {
 
 function keyDown(event) {
 	switch (event.keyCode) {
-		case 33: // HAUT
-			plusHaut = true;
-			break;
-		case 34: // BAS
-			plusBas = true;
-			break;
 		case 38: // up
 		case 90: // w
 			moveForward = true;
@@ -374,10 +350,6 @@ function keyDown(event) {
 		case 39: // right
 		case 68: // d
 			moveRight = true;
-			break;
-		case 32: // space
-			if (canJump === true) velocity.y += 350;
-			canJump = false;
 			break;
 	}
 }
