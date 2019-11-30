@@ -12,8 +12,21 @@ function getTexte(poster) {
 		description = "Pierre Henri\nEruption du Vésuve\n arrivée le 24 août\n de l'an 79 de J.-C\n sous le règne de Titus"
 	} else if (poster.name === 'poster_geromePolliceVerso') {
 		description = "Pollice Verso\ndu peintre français\nJean-Léon Gérôme\nréalisé en 1872"
+	} else if (poster.name === 'poster_Anubis') {
+		description = "Maître des nécropoles\net protecteur des\nembaumeurs, Anubis\nest un dieu\nde l\'Egypte Antique"
+	} else if (poster.name === 'poster_Hieroglyphes') {
+		description = "Les hiéroglyphes\nsont un système d'écriture\nutilisés autrefois\nen Egypte,\nles caractères sont\nreprésentés par des\nobjets divers"
+	} else if (poster.name === 'poster_AbouSimbel') {
+		description = "Le temple d\'Abou Simbel\na été construit\ndans la roche\nlors de la XIXème\ndynastie Egyptienne"
+	} else if (poster.name === 'poster_Nil') {
+		description = "Plus grand fleuve\ndu monde, le Nil\ntraverse l\'Egypte\nsur 6700km"
+	} else if (poster.name === 'poster_Sphinx') {
+		description = "Le Sphinx est la\nplus grande sculpture\ndu monde en\natteignant les\n73,5 mètres de long"
+	} else if (poster.name === 'poster_Pyramides') {
+		description = "Autrefois utilisées\ncomme tombeau des rois,\nles pyramides sont\naujourd'hui un symbole\nde l\'Egypte"
+	} else if (poster.name === 'poster_Sarcophage') {
+		description = "Lorsque qu'un\npharaon venait\nà mourir,\nson corps était\nmis dans\nun sarcophage"
 	}
-
 
 	return description;
 }
