@@ -289,7 +289,7 @@ KeyboardControls.prototype.update = function (dt) {
 
 		var pos = camera.position;
 
-		if ((pos.x > ext.x - 5 && pos.x < ext.x + 5) && (pos.z > ext.z - 5 && pos.z < ext.z + 5)) {
+		if ((pos.x > ext.x - 3.5 && pos.x < ext.x + 3.5) && (pos.z > ext.z - 3.5 && pos.z < ext.z + 3.5)) {
 			mouseClicked = false;
 			this.isLocked = true;
 		}
