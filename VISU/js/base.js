@@ -17,6 +17,7 @@ function creerSol(nom, largeur, hauteur, materiau) {
 	var mesh = new THREE.Mesh(geo, materiau);
 	mesh.name = "sol_" + nom;
 	mesh.rotation.x = - Math.PI / 2;
+	mesh.receiveShadow = true;
 	return mesh;
 }
 
@@ -25,6 +26,7 @@ function creerCloison(nom, largeur, hauteur, epaisseur, nx, ny, nz, materiau) {
 	var mesh = new THREE.Mesh(geo, materiau);
 	mesh.name = "mur_" + nom;
 	mesh.position.set(0, hauteur, 0);
+	mesh.castShadow = true;
 	return mesh;
 }
 
@@ -107,7 +109,9 @@ function creerText(description, largeur) {
 
 function creerSourcePonctuelle(couleur, intensite, portee, attenuation) {
 	var light = new THREE.PointLight(couleur, intensite, portee, attenuation);
+	// ajout d'une sphere comme "source" de lumiere
 	light.add(new THREE.Mesh(new THREE.SphereBufferGeometry(0.5,16,16), new THREE.MeshBasicMaterial({color:couleur})))
+	light.castShadow = true;
 	return light;
 }
 

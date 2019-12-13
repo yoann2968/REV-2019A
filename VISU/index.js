@@ -21,6 +21,12 @@ var mouseX = 0.0;
 var mouseY = 0.0;
 
 var data;
+
+var params = {
+    shadows: false
+};
+
+var previousShadowMap = false;
 //#endregion
 
 //#region Initialisation
@@ -32,7 +38,10 @@ function init() {
 
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.physicallyCorrectLights = false;
+    renderer.shadowMap.enabled = false;
     document.body.appendChild(renderer.domElement);
+    console.log(params.shadows);
 
     scene = new THREE.Scene();
     enregistrerDansAnnuaire("scene", scene);
@@ -92,6 +101,10 @@ function init() {
 
     chrono.start();
 
+    var gui = new GUI();
+    gui.add(params, 'shadows');
+    gui.open();
+
 };
 //#endregion
 
@@ -122,6 +135,22 @@ function animate() {
     temps += dt;
     requestAnimationFrame(animate);
     controls.update(dt);
+    renderer.shadowMap.enabled = params.shadows;
+
+    if (params.shadows !== previousShadowMap) {
+        var textureSolSalleGauche = chercherDansAnnuaire("textureSolSalleGauche");
+        textureSolSalleGauche.needsUpdate = true;
+        var textureSolSalleDroite = chercherDansAnnuaire("textureSolSalleDroite");
+        textureSolSalleDroite.needsUpdate = true;
+        var textureSolSalleAvant = chercherDansAnnuaire("textureSolSalleAvant");
+        textureSolSalleAvant.needsUpdate = true;
+        var textureSolSalleArriere = chercherDansAnnuaire("textureSolSalleArriere");
+        textureSolSalleArriere.needsUpdate = true;
+        var textureSolSalleCentrale = chercherDansAnnuaire("textureSolSalleCentrale");
+        textureSolSalleCentrale.needsUpdate = true;
+        previousShadowMap = params.shadows;
+    }
+
     renderer.render(scene, camera);
 }
 //#endregion
