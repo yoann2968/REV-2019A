@@ -107,6 +107,7 @@ function creerText(description, largeur) {
 
 function creerSourcePonctuelle(couleur, intensite, portee, attenuation) {
 	var light = new THREE.PointLight(couleur, intensite, portee, attenuation);
+	light.add(new THREE.Mesh(new THREE.SphereBufferGeometry(0.5,16,16), new THREE.MeshBasicMaterial({color:couleur})))
 	return light;
 }
 
