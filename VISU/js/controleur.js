@@ -259,11 +259,48 @@ function isInCorner(posX, posZ) {
 	return distance && distance2 && distance3 && distance4;
 }
 
+// Affiche le nom des tableaux proches devant le joueur
+function setInformation(salleActuelle){
+	var informations = document.getElementById("informations");
+	var tableauxName = getTableauxSalleActuelle(salleActuelle);
+	var trucAecrire = getSalleActuelle() + '<br/>' 
+	+ 'Tableaux proches : ' + '<br/>';
+	tableauxName.forEach(function(tableauName){
+		trucAecrire += tableauName + '<br/>';
+	});
+	if (informations != null){
+		informations.innerHTML = trucAecrire;
+	}
+}
+
+// Récupère le nom des tableaux de la salle dans laquelle se trouve le joueur
+function getTableauxSalleActuelle(salleActuelle){
+	var tableaux = [];
+	var nomTableaux = [];
+	var salleActuelle1 = salleActuelle.substr(0,1).toUpperCase() + salleActuelle.substr(1,salleActuelle.length);
+	for (var i=0 in annuaire){
+		if (annuaire[i].parent != null){
+			if (annuaire[i].parent.name.includes(salleActuelle1)){
+				tableaux.push(annuaire[i]);
+			}
+		}
+	}
+	if (tableaux.length > 0){
+		tableaux.forEach(function(tableau){
+			nomTableaux.push(tableau.name.substr(7, tableau.name.length));
+		});
+	}
+	return nomTableaux;
+}
+
 KeyboardControls.prototype.update = function (dt) {
 
 	detectTableaux();
 
 	var salleActuelle = getSalleActuelle();
+
+	setInformation(salleActuelle);
+	
 	if (salleActuelle != salle) {
 		if (salleActuelle != "salleCentrale") {
 			var sound = chercherDansAnnuaire(salleActuelle + "Audio");
