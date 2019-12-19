@@ -17,7 +17,7 @@ var moveForward = false;
 var moveBackward = false;
 var moveLeft = false;
 var moveRight = false;
-var salle = "salleCentrale";
+var salle = "";
 //#endregion
 
 //#region Méthode
@@ -196,13 +196,13 @@ function detectTableaux() {
 				}
 			}
 			lastPosterSeen = intersects[0].object;
+			//Stocke le dernier élément vu par le 'joueur'
+			previousElementSeen = intersects[0].object.name;
 			// Si on regarde un mur ou un sol, efface la description du précédent poster vu
 		} else if (objectName.includes(MUR) || objectName.includes(SOL)) {
 			effacerTexte(lastPosterSeen);
 			date = new Date();
 		}
-		//Stocke le dernier élément vu par le 'joueur'
-		previousElementSeen = intersects[0].object.name;
 	}
 }
 
@@ -287,7 +287,8 @@ function getTableauxSalleActuelle(salleActuelle){
 	}
 	if (tableaux.length > 0){
 		tableaux.forEach(function(tableau){
-			nomTableaux.push(tableau.name.substr(7, tableau.name.length));
+			var name = tableau.name.split('_');
+			nomTableaux.push(name[1]);
 		});
 	}
 	return nomTableaux;
@@ -298,18 +299,20 @@ KeyboardControls.prototype.update = function (dt) {
 	detectTableaux();
 
 	var salleActuelle = getSalleActuelle();
-
-	setInformation(salleActuelle);
 	
 	if (salleActuelle != salle) {
 		if (salleActuelle != "salleCentrale") {
 			var sound = chercherDansAnnuaire(salleActuelle + "Audio");
 			sound.play();
 		}
+		if(salle == ""){
+			salle = salleActuelle;
+		}
 		if (salle != "salleCentrale") {
 			sound = chercherDansAnnuaire(salle + "Audio");
 			sound.stop();
 		}
+		setInformation(salleActuelle);
 		salle = salleActuelle;
 	}
 

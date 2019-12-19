@@ -147,7 +147,6 @@ function creerModel(url) {
 			if (child.isMesh) child.material.map = texture;
 		});
 		object.position.y = 0.5;
-		object.rotateX=1.57079632679;
 		scene.add(object);
 	}
 
@@ -160,7 +159,7 @@ function creerModel(url) {
 
 	var textureLoader = new THREE.TextureLoader(manager);
 
-	//var texture = textureLoader.load('assets/uv_grid_opengl.jpg');
+	var texture = textureLoader.load('assets/uv_grid_opengl.jpg');
 
 	// model
 
