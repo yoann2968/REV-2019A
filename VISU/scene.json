@@ -144,6 +144,14 @@
 										"params":{"largeur":4.5, "hauteur":2.5, "epaisseur":0.5, "url":"assets/posters/Finistere/GwennHaDu.png"}},
 			{"type":"poster", "nom":"Meneham",
 										"params":{"largeur":3.5, "hauteur":3, "epaisseur":0.5, "url":"assets/posters/Finistere/Meneham.png"}},
+			{"type":"poster", "nom":"Star Wars",
+										"params":{"largeur":3, "hauteur":3, "epaisseur":0.5, "url":"assets/posters/Films/StarWars.jpg"}},
+			{"type":"poster", "nom":"Le seigneur des anneaux",
+										"params":{"largeur":3, "hauteur":3, "epaisseur":0.5, "url":"assets/posters/Films/LeSeigneurDesAnneaux.jpg"}},
+			{"type":"poster", "nom":"Harry Potter",
+										"params":{"largeur":3.5, "hauteur":3.5, "epaisseur":0.5, "url":"assets/posters/Films/HarryPotter.jpg"}},
+			{"type":"poster", "nom":"The terminator",
+										"params":{"largeur":3, "hauteur":3.5, "epaisseur":0.5, "url":"assets/posters/Films/Terminator.jpg"}},
 
 			{"type":"cloison", "nom":"mur1PieceMilieu", "params":{"largeur":12.0, 
                                                      		"hauteur":6.0,
@@ -394,7 +402,14 @@
 			{"fonc":"orienterY", "objet":"Ile Des Capucins", "params":{"angle":3.1415926535}},
 			{"fonc":"placerXYZ", "objet":"Gwenn Ha Du", "params":{"x":-2.2, "y":1,"z":0.1}},
 			{"fonc":"placerXYZ", "objet":"Meneham", "params":{"x":-2.2, "y":1,"z":-0.1}},
-			{"fonc":"orienterY", "objet":"Meneham", "params":{"angle":3.1415926535}}
+			{"fonc":"orienterY", "objet":"Meneham", "params":{"angle":3.1415926535}},
+			{"fonc":"placerXYZ", "objet":"Star Wars", "params":{"x":0, "y":1,"z":0.1}},
+			{"fonc":"placerXYZ", "objet":"Le seigneur des anneaux", "params":{"x":0, "y":1,"z":-0.1}},
+			{"fonc":"orienterY", "objet":"Le seigneur des anneaux", "params":{"angle":3.1415926535}},
+			{"fonc":"placerXYZ", "objet":"Harry Potter", "params":{"x":2.5, "y":1,"z":-0.1}},
+			{"fonc":"orienterY", "objet":"Harry Potter", "params":{"angle":3.1415926535}},
+			{"fonc":"placerXYZ", "objet":"The terminator", "params":{"x":-2.5, "y":1,"z":-0.1}},
+			{"fonc":"orienterY", "objet":"The terminator", "params":{"angle":3.1415926535}}
 		    ],
 	"relations" : [
 			{"rel":"parentDe","sujet":"scene","objet":"ampouleSalleCentrale"},
@@ -481,6 +496,10 @@
 			{"rel":"parentDe","sujet":"mur1SalleGauche","objet":"Ile De Molene"},
 			{"rel":"parentDe","sujet":"mur3SalleGauche","objet":"Ile Des Capucins"},
 			{"rel":"parentDe","sujet":"mur1SalleGauche","objet":"Gwenn Ha Du"},
-			{"rel":"parentDe","sujet":"mur3SalleGauche","objet":"Meneham"}
+			{"rel":"parentDe","sujet":"mur3SalleGauche","objet":"Meneham"},
+			{"rel":"parentDe","sujet":"mur4PieceMilieu","objet":"Star Wars"},
+			{"rel":"parentDe","sujet":"mur8PieceMilieu","objet":"Le seigneur des anneaux"},
+			{"rel":"parentDe","sujet":"mur6PieceMilieu","objet":"Harry Potter"},
+			{"rel":"parentDe","sujet":"mur6PieceMilieu","objet":"The terminator"}
 		      ]
 }

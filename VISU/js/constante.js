@@ -46,7 +46,16 @@ function getTexte(poster) {
 		description = "Le Gwenn Ha Du est\nle drapeau de la Bretagne,\n il est composé\nd'hermines et de bandes\nblanches et noires"
 	} else if (poster.name === 'poster_Meneham') {
 		description = "Le corps de garde\nde Meneham a été\nconstruit vers 1756\npour surveiller la côte"
+	} else if (poster.name === 'poster_Star Wars') {
+		description = "Dans une galaxie lointaine,\n très lointaine...\n Les Jedis et\nle côté obscur mènent\nune guerre permanente\n l'un contre l'autre"
+	} else if (poster.name === 'poster_Le seigneur des anneaux') {
+		description = "Dans la Terre du milieu,\nFrodo Bessac se retrouve\nen possession de l'anneau\nunique, appartenant au seigneur\ndes ténèbres en personne.\nSon but ? Le détruire"
+	} else if (poster.name === 'poster_Harry Potter') {
+		description = "Un beau jour d'automne,\nun enfant de 11 ans reçoit\n une lettre qui va\nchanger sa vie\ndu tout au tout..."
+	} else if (poster.name === 'poster_The terminator') {
+		description = "En 2029, une guerre\noppose les humains aux machines.\nPour gagner celle-ci,\nles robots envoient un terminator\ndans le passé pour tuer\nle leader de la résistance\navant qu'il ne naisse"
 	}
+
 
 	return description;
 }
