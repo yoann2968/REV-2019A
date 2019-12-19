@@ -17,7 +17,7 @@ var moveForward = false;
 var moveBackward = false;
 var moveLeft = false;
 var moveRight = false;
-var salle = "";
+var salle = "salleCentrale";
 //#endregion
 
 //#region Méthode
@@ -308,9 +308,6 @@ KeyboardControls.prototype.update = function (dt) {
 		if (salleActuelle != "salleCentrale") {
 			var sound = chercherDansAnnuaire(salleActuelle + "Audio");
 			sound.play();
-		}
-		if(salle == ""){
-			salle = salleActuelle;
 		}
 		if (salle != "salleCentrale") {
 			sound = chercherDansAnnuaire(salle + "Audio");

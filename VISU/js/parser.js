@@ -157,4 +157,6 @@ function parser() {
 		}
 	}
 
+	setInformation("SalleCentrale");
+
 }
