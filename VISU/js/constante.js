@@ -2,9 +2,7 @@
    Attention : maximum 7 lignes sinon texte plus grand que l'oeuvre */
 function getTexte(poster) {
 	var description;
-	if (poster.name === 'poster_poster01') {
-		description = 'Marie Curie \ndécouvrant \nla célèbre épice qui \nportera son nom'
-	} else if (poster.name === 'poster_Da Cortana 1643') {
+	if (poster.name === 'poster_Da Cortana 1643') {
 		description = 'Da Cortona 1643\nRemus et Romulus\nrecueillis par Faustulis'
 	} else if (poster.name === 'poster_Monu Pompei Muraille Poissons') {
 		description = "Peinture des murs\nd'une villa de Pompéi\nMuraille dite des Poissons\n(musée de Naples)"
@@ -31,7 +29,7 @@ function getTexte(poster) {
 	} else if (poster.name === 'poster_La Joconde') {
 		description = "La Joconde\n de Léonard de Vinci\nreprésente le portrait\n d'une jeune femme sur fond\nd'un paysage montagneux\naux horizons lointains et brumeux"
 	} else if (poster.name === "poster_La création d'Adam") {
-		description = "La création d’Adam\nde Michel Ange\nreprésente Dieu sur la droite\navec son index rejoigant\nl'index d'Adam\nsans le toucher"
+		description = "La création d’Adam\nde Michel Ange\nreprésente Dieu sur la droite\navec son index rejoignant\nl'index d'Adam\nsans le toucher"
 	} else if (poster.name === "poster_Vénus d'Urbin") {
 		description = "Le corps d'une femme\ncouché sur un lit\navec à l'arrière\n une vaste pièce\nqui ouvre sur un parc\narboré et sur le ciel bleu"
 	} else if (poster.name === 'poster_Danaé') {
