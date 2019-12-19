@@ -140,6 +140,17 @@
 			{"type":"poster", "nom":"Danaé",
 										"params":{"largeur":4.5, "hauteur":3, "epaisseur":0.5, "url":"assets/posters/renaissance/danaé-le-corrège.jpg"}},
 		
+			{"type":"poster", "nom":"IleDeMolene",
+										"params":{"largeur":3.5, "hauteur":3, "epaisseur":0.5, "url":"assets/posters/Finistere/ileMolene.jpg"}},
+			{"type":"poster", "nom":"IleDesCapucins",
+										"params":{"largeur":3.5, "hauteur":3, "epaisseur":0.5, "url":"assets/posters/Finistere/ileDesCapucins.jpg"}},
+			{"type":"poster", "nom":"PetitMinou",
+										"params":{"largeur":10, "hauteur":4, "epaisseur":0.5, "url":"assets/posters/Finistere/panoramaPetitMinou.jpg"}},
+			{"type":"poster", "nom":"GwennHaDu",
+										"params":{"largeur":4.5, "hauteur":2.5, "epaisseur":0.5, "url":"assets/posters/Finistere/GwennHaDu.png"}},
+			{"type":"poster", "nom":"Meneham",
+										"params":{"largeur":3.5, "hauteur":3, "epaisseur":0.5, "url":"assets/posters/Finistere/Meneham.png"}},
+
 			{"type":"cloison", "nom":"mur1PieceMilieu", "params":{"largeur":12.0, 
                                                      		"hauteur":6.0,
 						     								"epaisseur":0.1,
@@ -384,6 +395,13 @@
 			{"fonc":"placerXYZ", "objet":"La création d'Adam", "params":{"x":0, "y":1,"z":0.1}},
 			{"fonc":"placerXYZ", "objet":"Vénus d'Urbin", "params":{"x":0, "y":1,"z":-0.1}},
 			{"fonc":"orienterY", "objet":"Vénus d'Urbin", "params":{"angle":3.1415926535}}
+			{"fonc":"placerXYZ", "objet":"PetitMinou", "params":{"x":0, "y":1,"z":0.1}},
+			{"fonc":"placerXYZ", "objet":"IleDeMolene", "params":{"x":2.4, "y":1,"z":0.1}},
+			{"fonc":"placerXYZ", "objet":"IleDesCapucins", "params":{"x":2.2, "y":1,"z":-0.1}},
+			{"fonc":"orienterY", "objet":"IleDesCapucins", "params":{"angle":3.1415926535}},
+			{"fonc":"placerXYZ", "objet":"GwennHaDu", "params":{"x":-2.2, "y":1,"z":0.1}},
+			{"fonc":"placerXYZ", "objet":"Meneham", "params":{"x":-2.2, "y":1,"z":-0.1}},
+			{"fonc":"orienterY", "objet":"Meneham", "params":{"angle":3.1415926535}}
 		    ],
 	"relations" : [
 			{"rel":"parentDe","sujet":"scene","objet":"ampouleSalleCentrale"},
@@ -467,5 +485,10 @@
 			{"rel":"parentDe","sujet":"mur2SalleDroite","objet":"Danaé"},
 			{"rel":"parentDe","sujet":"mur1SalleDroite","objet":"La création d'Adam"},
 			{"rel":"parentDe","sujet":"mur3SalleDroite","objet":"Vénus d'Urbin"}
+			{"rel":"parentDe","sujet":"mur2SalleGauche","objet":"PetitMinou"},
+			{"rel":"parentDe","sujet":"mur1SalleGauche","objet":"IleDeMolene"},
+			{"rel":"parentDe","sujet":"mur3SalleGauche","objet":"IleDesCapucins"},
+			{"rel":"parentDe","sujet":"mur1SalleGauche","objet":"GwennHaDu"},
+			{"rel":"parentDe","sujet":"mur3SalleGauche","objet":"Meneham"}
 		      ]
 }
