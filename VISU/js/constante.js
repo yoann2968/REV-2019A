@@ -3,11 +3,11 @@
 function getTexte(poster) {
 	var description;
 	if (poster.name === 'poster_Hunger Games') {
-		description = 'Affiche du film Hunger Games\nreprésentant un geais moqueur\nen citant une phrase\ndu capitol\n"puisse le sort\nvous être favorable"'
+		description = 'Affiche du film Hunger Games\nreprésentant un geai moqueur\nen citant une phrase\ndu capitol\n"puisse le sort\nvous être favorable"'
 	}else if (poster.name === 'poster_Fast & Furious') {
 		description = 'Affiche du 5éme\nFast & Furious\nmontrant Vin Diesel\nau côtés de\nPaul Walker'
 	}else if (poster.name === 'poster_Fast & Furious separation') {
-		description = 'Scene final de\nFast & Furious 7\nmontrant la séparation\nde Vin Diessel et\nPaul Walker'
+		description = 'Scene final de\nFast & Furious 7\nmontrant la séparation\nde Vin Diesel et\nPaul Walker'
 	}
 	
 	else if (poster.name === 'poster_Da Cortana 1643') {
