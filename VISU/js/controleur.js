@@ -262,6 +262,9 @@ function isInCorner(posX, posZ) {
 // Affiche le nom des tableaux proches devant le joueur
 function setInformation(salleActuelle){
 	var informations = document.getElementById("informations");
+	if(salleActuelle == "couloir"){
+		informations.innerHTML="";
+	}else{
 	var tableauxName = getTableauxSalleActuelle(salleActuelle);
 	var trucAecrire = getSalleActuelle() + '<br/>' 
 	+ 'Tableaux proches : ' + '<br/>';
@@ -271,6 +274,7 @@ function setInformation(salleActuelle){
 	if (informations != null){
 		informations.innerHTML = trucAecrire;
 	}
+}
 }
 
 // Récupère le nom des tableaux de la salle dans laquelle se trouve le joueur
