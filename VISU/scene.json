@@ -9,7 +9,7 @@
 			{"type":"ampoule", "nom":"ampouleSalleCouloir2" , "params":{"couleur":"rouge","intensite":2.0,"portee":30.0,"attenuation":5.0}},
 			{"type":"ampoule", "nom":"ampouleSalleCouloir3" , "params":{"couleur":"rouge","intensite":2.0,"portee":30.0,"attenuation":5.0}},
 			{"type":"ampoule", "nom":"ampouleSalleCouloir4" , "params":{"couleur":"rouge","intensite":2.0,"portee":30.0,"attenuation":5.0}},
-			{"type":"audio", "nom":"salleGaucheAudio" , "params":{"loop":true,"volume":1.0,"distance":1.0,"url":"assets/musique.mp3"}},
+			{"type":"audio", "nom":"salleGaucheAudio" , "params":{"loop":true,"volume":1.0,"distance":1.0,"url":"assets/musique/music-bretagne.mp3"}},
 			{"type":"audio", "nom":"salleDroiteAudio" , "params":{"loop":true,"volume":1.0,"distance":1.0,"url":"assets/musique.mp3"}},
 			{"type":"audio", "nom":"salleAvantAudio" , "params":{"loop":true,"volume":1.0,"distance":1.0,"url":"assets/musique/music-roman.mp3"}},
 			{"type":"audio", "nom":"salleArriereAudio" , "params":{"loop":true,"volume":1.0,"distance":1.0,"url":"assets/musique/music-pharaoh.mp3"}},
@@ -131,6 +131,16 @@
 										"params":{"largeur":3.2, "hauteur":2.3, "epaisseur":0.5, "url":"assets/posters/Egypte/TempleAbouSimbel.jpg"}},
 			{"type":"poster", "nom":"Hieroglyphes",
 										"params":{"largeur":2.5, "hauteur":2, "epaisseur":0.5, "url":"assets/posters/Egypte/Hieroglyphes.jpg"}},
+			{"type":"poster", "nom":"Ile De Molene",
+										"params":{"largeur":3.5, "hauteur":3, "epaisseur":0.5, "url":"assets/posters/Finistere/ileMolene.jpg"}},
+			{"type":"poster", "nom":"Ile Des Capucins",
+										"params":{"largeur":3.5, "hauteur":3, "epaisseur":0.5, "url":"assets/posters/Finistere/ileDesCapucins.jpg"}},
+			{"type":"poster", "nom":"Petit Minou",
+										"params":{"largeur":10, "hauteur":4, "epaisseur":0.5, "url":"assets/posters/Finistere/panoramaPetitMinou.jpg"}},
+			{"type":"poster", "nom":"Gwenn Ha Du",
+										"params":{"largeur":4.5, "hauteur":2.5, "epaisseur":0.5, "url":"assets/posters/Finistere/GwennHaDu.png"}},
+			{"type":"poster", "nom":"Meneham",
+										"params":{"largeur":3.5, "hauteur":3, "epaisseur":0.5, "url":"assets/posters/Finistere/Meneham.png"}},
 
 			{"type":"cloison", "nom":"mur1PieceMilieu", "params":{"largeur":12.0, 
                                                      		"hauteur":6.0,
@@ -372,7 +382,14 @@
 			{"fonc":"placerXYZ", "objet":"Sarcophage", "params":{"x":0, "y":1,"z":-0.1}},
 			{"fonc":"orienterY", "objet":"Sarcophage", "params":{"angle":3.1415926535}},
 			{"fonc":"placerXYZ", "objet":"Hieroglyphes", "params":{"x":-2, "y":1,"z":-0.1}},
-			{"fonc":"orienterY", "objet":"Hieroglyphes", "params":{"angle":3.1415926535}}
+			{"fonc":"orienterY", "objet":"Hieroglyphes", "params":{"angle":3.1415926535}},
+			{"fonc":"placerXYZ", "objet":"Petit Minou", "params":{"x":0, "y":1,"z":0.1}},
+			{"fonc":"placerXYZ", "objet":"Ile De Molene", "params":{"x":2.4, "y":1,"z":0.1}},
+			{"fonc":"placerXYZ", "objet":"Ile Des Capucins", "params":{"x":2.2, "y":1,"z":-0.1}},
+			{"fonc":"orienterY", "objet":"Ile Des Capucins", "params":{"angle":3.1415926535}},
+			{"fonc":"placerXYZ", "objet":"Gwenn Ha Du", "params":{"x":-2.2, "y":1,"z":0.1}},
+			{"fonc":"placerXYZ", "objet":"Meneham", "params":{"x":-2.2, "y":1,"z":-0.1}},
+			{"fonc":"orienterY", "objet":"Meneham", "params":{"angle":3.1415926535}}
 		    ],
 	"relations" : [
 			{"rel":"parentDe","sujet":"scene","objet":"ampouleSalleCentrale"},
@@ -451,6 +468,11 @@
 			{"rel":"parentDe","sujet":"mur1SalleArriere","objet":"Nil"},
 			{"rel":"parentDe","sujet":"mur2SalleArriere","objet":"Sarcophage"},
 			{"rel":"parentDe","sujet":"mur3SalleArriere","objet":"AbouSimbel"},
-			{"rel":"parentDe","sujet":"mur3SalleArriere","objet":"Hieroglyphes"}
+			{"rel":"parentDe","sujet":"mur3SalleArriere","objet":"Hieroglyphes"},
+			{"rel":"parentDe","sujet":"mur2SalleGauche","objet":"Petit Minou"},
+			{"rel":"parentDe","sujet":"mur1SalleGauche","objet":"Ile De Molene"},
+			{"rel":"parentDe","sujet":"mur3SalleGauche","objet":"Ile Des Capucins"},
+			{"rel":"parentDe","sujet":"mur1SalleGauche","objet":"Gwenn Ha Du"},
+			{"rel":"parentDe","sujet":"mur3SalleGauche","objet":"Meneham"}
 		      ]
 }
