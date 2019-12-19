@@ -2,7 +2,15 @@
    Attention : maximum 7 lignes sinon texte plus grand que l'oeuvre */
 function getTexte(poster) {
 	var description;
-	if (poster.name === 'poster_Da Cortana 1643') {
+	if (poster.name === 'poster_Hunger Games') {
+		description = 'Affiche du film Hunger Games\nreprésentant un geais moqueur\nen citant une phrase\ndu capitol\n"puisse le sort\nvous être favorable"'
+	}else if (poster.name === 'poster_Fast & Furious') {
+		description = 'Affiche du 5éme\nFast & Furious\nmontrant Vin Diesel\nau côtés de\nPaul Walker'
+	}else if (poster.name === 'poster_Fast & Furious separation') {
+		description = 'Scene final de\nFast & Furious 7\nmontrant la séparation\nde Vin Diessel et\nPaul Walker'
+	}
+	
+	else if (poster.name === 'poster_Da Cortana 1643') {
 		description = 'Da Cortona 1643\nRemus et Romulus\nrecueillis par Faustulis'
 	} else if (poster.name === 'poster_Monu Pompei Muraille Poissons') {
 		description = "Peinture des murs\nd'une villa de Pompéi\nMuraille dite des Poissons\n(musée de Naples)"
