@@ -38,14 +38,14 @@ function getTexte(poster) {
 		description = "Le Corrège dépeint\nDanaé couchée sur un lit\ntandis qu'un enfant\nEros la déshabille\nsous des pluies d'or\nvenant d'un nuage"
 	} else if (poster.name === 'poster_Sarcophage') {
 		description = "Lorsque qu'un\npharaon venait\nà mourir,\nson corps était\nmis dans\nun sarcophage"
-	} else if (poster.name === 'poster_PetitMinou') {
+	} else if (poster.name === 'poster_Petit Minou') {
 		description = "Le phare du Petit Minou\nindique aux bateaux désirant\nse rendre à Brest, la route\n à suivre pour entrer dans\nla rade"
-	} else if (poster.name === 'poster_IleDeMolene') {
+	} else if (poster.name === 'poster_Ile De Molene') {
 		description = "L'île de Molène,\nau large des\ncôtes Bretonnes"
-	} else if (poster.name === 'poster_IleDesCapucins') {
+	} else if (poster.name === 'poster_Ile Des Capucins') {
 		description = "Construit en 1848\net situé à l'entrée\n du goulet de Brest,\n l'île des capucins\n a longtemps défendu\n la ville de Brest"
-	} else if (poster.name === 'poster_GwennHaDu') {
-		description = "Le Gween Ha Du est\nle drapeau de la Bretagne,\n il est composé\nd'hermines et de bandes\nblanches et noires"
+	} else if (poster.name === 'poster_Gwenn Ha Du') {
+		description = "Le Gwenn Ha Du est\nle drapeau de la Bretagne,\n il est composé\nd'hermines et de bandes\nblanches et noires"
 	} else if (poster.name === 'poster_Meneham') {
 		description = "Le corps de garde\nde Meneham a été\nconstruit vers 1756\npour surveiller la côte"
 	}
