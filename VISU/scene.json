@@ -383,11 +383,19 @@
 			{"fonc":"orienterY", "objet":"Sarcophage", "params":{"angle":3.1415926535}},
 			{"fonc":"placerXYZ", "objet":"Hieroglyphes", "params":{"x":-2, "y":1,"z":-0.1}},
 			{"fonc":"orienterY", "objet":"Hieroglyphes", "params":{"angle":3.1415926535}},
+<<<<<<< HEAD
 			{"fonc":"placerXYZ", "objet":"Petit Minou", "params":{"x":0, "y":1,"z":0.1}},
 			{"fonc":"placerXYZ", "objet":"Ile De Molene", "params":{"x":2.4, "y":1,"z":0.1}},
 			{"fonc":"placerXYZ", "objet":"Ile Des Capucins", "params":{"x":2.2, "y":1,"z":-0.1}},
 			{"fonc":"orienterY", "objet":"Ile Des Capucins", "params":{"angle":3.1415926535}},
 			{"fonc":"placerXYZ", "objet":"Gwenn Ha Du", "params":{"x":-2.2, "y":1,"z":0.1}},
+=======
+			{"fonc":"placerXYZ", "objet":"PetitMinou", "params":{"x":0, "y":1,"z":0.1}},
+			{"fonc":"placerXYZ", "objet":"IleDeMolene", "params":{"x":2.4, "y":1,"z":0.1}},
+			{"fonc":"placerXYZ", "objet":"IleDesCapucins", "params":{"x":2.2, "y":1,"z":-0.1}},
+			{"fonc":"orienterY", "objet":"IleDesCapucins", "params":{"angle":3.1415926535}},
+			{"fonc":"placerXYZ", "objet":"GwennHaDu", "params":{"x":-2.2, "y":1,"z":0.1}},
+>>>>>>> 7e220c168699d8082c15d52b5ef5d48406097d03
 			{"fonc":"placerXYZ", "objet":"Meneham", "params":{"x":-2.2, "y":1,"z":-0.1}},
 			{"fonc":"orienterY", "objet":"Meneham", "params":{"angle":3.1415926535}}
 		    ],
@@ -469,10 +477,17 @@
 			{"rel":"parentDe","sujet":"mur2SalleArriere","objet":"Sarcophage"},
 			{"rel":"parentDe","sujet":"mur3SalleArriere","objet":"AbouSimbel"},
 			{"rel":"parentDe","sujet":"mur3SalleArriere","objet":"Hieroglyphes"},
+<<<<<<< HEAD
 			{"rel":"parentDe","sujet":"mur2SalleGauche","objet":"Petit Minou"},
 			{"rel":"parentDe","sujet":"mur1SalleGauche","objet":"Ile De Molene"},
 			{"rel":"parentDe","sujet":"mur3SalleGauche","objet":"Ile Des Capucins"},
 			{"rel":"parentDe","sujet":"mur1SalleGauche","objet":"Gwenn Ha Du"},
+=======
+			{"rel":"parentDe","sujet":"mur2SalleGauche","objet":"PetitMinou"},
+			{"rel":"parentDe","sujet":"mur1SalleGauche","objet":"IleDeMolene"},
+			{"rel":"parentDe","sujet":"mur3SalleGauche","objet":"IleDesCapucins"},
+			{"rel":"parentDe","sujet":"mur1SalleGauche","objet":"GwennHaDu"},
+>>>>>>> 7e220c168699d8082c15d52b5ef5d48406097d03
 			{"rel":"parentDe","sujet":"mur3SalleGauche","objet":"Meneham"}
 		      ]
 }
